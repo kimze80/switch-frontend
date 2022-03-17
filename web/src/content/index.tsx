@@ -1,5 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Container, Content, SyncButton, StatusText } from './styles';
+import {
+  Container,
+  Content,
+  SyncButton,
+  StatusText,
+  ButtonTextWrapper,
+} from './styles';
 import Card from '../components/Card';
 import * as list from '../data/data';
 import gmailIcon from '../assets/gmail.svg';
@@ -58,10 +64,10 @@ const MainContent = () => {
           subtitle="These Gmail contacts will sync to MailChimp"
           data={gmailData}
         />
-        <div>
+        <ButtonTextWrapper>
           <SyncButton onClick={handleSync} data-testid="sync-button" />
           <StatusText data-testid="sync-status-text">{statusText}</StatusText>
-        </div>
+        </ButtonTextWrapper>
         <Card
           icon={mailchimpIcon}
           title="Mailchimp"

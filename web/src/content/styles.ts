@@ -12,9 +12,10 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  height: 440px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const SyncButton = styled.button`
@@ -37,4 +38,11 @@ export const StatusText = styled.p`
   text-align: center;
   color: #374a5e;
   margin: 0;
+`;
+
+export const ButtonTextWrapper = styled.div`
+  height: 355.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
