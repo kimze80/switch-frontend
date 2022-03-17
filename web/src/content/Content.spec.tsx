@@ -36,4 +36,24 @@ describe('<MainContent />', () => {
       expect(screen.getByText('All done!')).toBeInTheDocument();
     }, 5000);
   });
+
+  it('Should show an alert when click on sync contacts button', async () => {
+    const providerProps = {
+      value: {
+        selectedData: [],
+        setSelectedData: () => jest.fn(),
+      },
+    };
+    global.alert = jest.fn();
+
+    render(
+      <SyncContext.Provider {...providerProps}>
+        <MainContent />
+      </SyncContext.Provider>,
+    );
+
+    fireEvent.click(screen.getByTestId('sync-button'));
+
+    expect(global.alert).toHaveBeenCalledTimes(1);
+  });
 });

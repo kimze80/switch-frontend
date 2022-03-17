@@ -44,6 +44,8 @@ const MainContent = () => {
         unSelectAllCheckboxes();
         setStatusText('All done!');
       }, 2000);
+    } else {
+      alert('Please select a contact!');
     }
   };
 
