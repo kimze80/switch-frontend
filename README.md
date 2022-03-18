@@ -1,8 +1,10 @@
 # trio-frontend
 
-In the project directory, you can run:
+Go in terminal
 
 ### `cd web`
+
+In the project directory, you can run:
 
 ### `npm start`
 
