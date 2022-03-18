@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 To run the tests
 
 Live app in this link below.\
-Open [https://youthful-yonath-08751e.netlify.app/](https://youthful-yonath-08751e.netlify.app/).
+Open [live app](https://youthful-yonath-08751e.netlify.app/).
 
 Technical design template.\
 Open [this link](https://docs.google.com/document/d/1dfJVgy-l9qT7wI5hZfXCG4u5_MmB1v2K_FU1hugPdnE/edit?usp=sharing).
