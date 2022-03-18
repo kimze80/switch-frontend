@@ -17,7 +17,6 @@ Open [https://youthful-yonath-08751e.netlify.app/](https://youthful-yonath-08751
 Technical design template.\
 Open [this link](https://docs.google.com/document/d/1dfJVgy-l9qT7wI5hZfXCG4u5_MmB1v2K_FU1hugPdnE/edit?usp=sharing).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
+
+To run the tests
