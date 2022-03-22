@@ -5,14 +5,10 @@ import selectDownIcon from '../../assets/select-down.svg';
 import checkIcon from '../../assets/check.svg';
 import Checkbox from '../Checkbox';
 import { SyncContext } from '../../context/SyncContext';
-
-type emailGroup = {
-  id: string;
-  name: string;
-};
+import { Contact } from '../../types/types';
 
 interface SelectProps {
-  data: emailGroup[];
+  data: Contact[];
 }
 
 const Select: React.FC<SelectProps> = ({ data }) => {
@@ -25,17 +21,18 @@ const Select: React.FC<SelectProps> = ({ data }) => {
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.checked) {
-        setSelectedData([
-          ...selectedData,
-          {
-            id: e.target.id,
-            name: e.target.name,
-          },
-        ]);
-      } else {
-        setSelectedData(selectedData.filter((item) => item.id !== e.target.id));
+      const { checked, id, name } = e.target;
+
+      if (!checked) {
+        setSelectedData(selectedData.filter((item) => item.id !== id));
       }
+      setSelectedData([
+        ...selectedData,
+        {
+          id,
+          name,
+        },
+      ]);
     },
     [selectedData, setSelectedData],
   );
@@ -59,11 +56,12 @@ const Select: React.FC<SelectProps> = ({ data }) => {
               name={list.name}
               label={list.name}
               value={list.name}
+              checked={selectedData.some((item) => item.id === list.id)}
               onChange={handleChange}
             />
           ))
         ) : (
-          <span>No list</span>
+          <span>No contacts available</span>
         )}
       </Content>
     </Container>

@@ -1,17 +1,13 @@
 import React from 'react';
 import { Container, IconContainer, Title, SubTitle } from './styles';
 import Select from '../Select';
-
-type emailGroup = {
-  id: string;
-  name: string;
-};
+import { Contact } from '../../types/types';
 
 interface CardProps {
   title: string;
   subtitle: string;
   icon: string;
-  data: emailGroup[];
+  data: Contact[];
 }
 
 const Card: React.FC<CardProps> = ({ title, subtitle, icon, data }) => {

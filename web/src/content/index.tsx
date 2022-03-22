@@ -11,43 +11,32 @@ import * as list from '../data/data';
 import gmailIcon from '../assets/gmail.svg';
 import mailchimpIcon from '../assets/mailchimp.svg';
 import { SyncContext } from '../context/SyncContext';
-
-function unSelectAllCheckboxes() {
-  const checkboxes = document.querySelectorAll<HTMLInputElement>(
-    'input[type="checkbox"]',
-  );
-  for (let i = 0; i < checkboxes.length; i += 1) {
-    if (checkboxes[i].type === 'checkbox') checkboxes[i].checked = false;
-  }
-}
+import * as functions from '../utils/functions';
 
 const MainContent = () => {
   const { selectedData, setSelectedData } = useContext(SyncContext);
   const [statusText, setStatusText] = useState('Sync Contacts');
+
   const [gmailData, setGmailData] = useState<any[]>(list.gmailData);
   const [mailchimpData, setMailchimpData] = useState<any[]>(list.mailchimpData);
 
+  const gmailListConcatSelectedList = gmailData.concat(selectedData);
+  const mailchimpListConcatSelectedList = mailchimpData.concat(selectedData);
+
+  const gmailUniqueList = functions.concatLists(gmailListConcatSelectedList);
+  const mailchimpUniqueList = functions.concatLists(
+    mailchimpListConcatSelectedList,
+  );
+
   const handleSync = () => {
     if (selectedData.length) {
-      const gmailConcat = gmailData.concat(selectedData);
-      const mailchimpConcat = mailchimpData.concat(selectedData);
-
-      const gmailUnique = Array.from(
-        new Set(gmailConcat.map((item) => item.id)),
-      ).map((e) => gmailConcat.find(({ id }) => id === e));
-
-      const mailchimpUnique = Array.from(
-        new Set(mailchimpConcat.map((item) => item.id)),
-      ).map((e) => mailchimpConcat.find(({ id }) => id === e));
-
       setStatusText('Syncing..');
 
       // Delay of 2 seconds to simulate a request
       setTimeout(() => {
-        setGmailData(gmailUnique);
-        setMailchimpData(mailchimpUnique);
+        setGmailData(gmailUniqueList);
+        setMailchimpData(mailchimpUniqueList);
         setSelectedData([]);
-        unSelectAllCheckboxes();
         setStatusText('All done!');
       }, 2000);
     } else {
