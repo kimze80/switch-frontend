@@ -28,16 +28,20 @@ const MainContent = () => {
     mailchimpListConcatSelectedList,
   );
 
+  const updateSync = () => {
+    setGmailData(gmailUniqueList);
+    setMailchimpData(mailchimpUniqueList);
+    setSelectedData([]);
+    setStatusText('All done!');
+  };
+
   const handleSync = () => {
     if (selectedData.length) {
       setStatusText('Syncing..');
 
       // Delay of 2 seconds to simulate a request
       setTimeout(() => {
-        setGmailData(gmailUniqueList);
-        setMailchimpData(mailchimpUniqueList);
-        setSelectedData([]);
-        setStatusText('All done!');
+        updateSync();
       }, 2000);
     } else {
       alert('Please select a contact!');
